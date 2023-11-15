@@ -1,6 +1,7 @@
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -47,8 +48,9 @@ public class chest {
         textField1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JLabel userInputLabel = new JLabel(textField1.getText());
+                int position = Arrays.asList(panel.getComponents()).indexOf(textField1);
                 panel.remove(textField1); // Remove the text field from the panel
-                panel.add(userInputLabel); // Add the label with user input to the panel
+                panel.add(userInputLabel, position); // Add the label with user input to the panel
                 panel.revalidate(); // Revalidat
             }
         });
@@ -59,8 +61,9 @@ public class chest {
         textField2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 JLabel userInputLabel = new JLabel(textField2.getText());
+                int position = Arrays.asList(panel.getComponents()).indexOf(textField1);
                 panel.remove(textField2);
-                panel.add(userInputLabel);
+                panel.add(userInputLabel, position);
                 panel.revalidate();
             }
         });
@@ -70,8 +73,9 @@ public class chest {
         textField3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 JLabel userInputLabel = new JLabel(textField3.getText());
+                int position = Arrays.asList(panel.getComponents()).indexOf(textField1);
                 panel.remove(textField3);
-                panel.add(userInputLabel);
+                panel.add(userInputLabel, position);
                 panel.revalidate();
             }
         });
