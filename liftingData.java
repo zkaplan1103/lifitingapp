@@ -3,10 +3,10 @@
  */
 
  import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+ import javax.swing.event.DocumentEvent;
+ import javax.swing.event.DocumentListener;
 
-import java.awt.*;
+ import java.awt.*;
  import java.awt.event.*;
 
  public class liftingData{
@@ -46,8 +46,7 @@ import java.awt.*;
         p.add(b1, c);
         c.gridx = 0;
         c.gridy = 1;
-        p.add(b2, c);
-
+        p.add(b2, c); //find a way to cut this down
         f.add(p);
 
     }
@@ -56,7 +55,7 @@ import java.awt.*;
         public void actionPerformed(ActionEvent e){
             f.setVisible(false);
             // Create and display a new JFrame with a textbox for user input
-            JFrame newFrame = new JFrame("New Frame with Textbox");
+            JFrame newFrame = new JFrame("Today's lift");
             JPanel panel = new JPanel();
             panel.setLayout(new BorderLayout());
             JTextField textField = new JTextField(20);
@@ -89,7 +88,7 @@ import java.awt.*;
         public void actionPerformed(ActionEvent e){
             f.setVisible(false);
             // Create and display a new JFrame with a textbox for user input
-            JFrame newFrame = new JFrame("New Frame with Textbox");
+            JFrame newFrame = new JFrame("Your Weekly Schedule");
             JPanel panel = new JPanel();
             panel.setLayout(new BorderLayout());
             JTextField textField = new JTextField(20);
@@ -126,9 +125,14 @@ import java.awt.*;
             f.setVisible(true);
         }
 
+
+
     }
 
 
+
+
+    
     public static void main(String[] args){
 
         new liftingData();
