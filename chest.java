@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JOptionPane;
 
 public class chest {
 
@@ -29,9 +30,12 @@ public class chest {
         panel.add(new JLabel("Update?"));
 
         // Add components for each row
-        addRow(panel, "Incline DB Press");
-        addRow(panel, "Machine Press");
-        addRow(panel, "Decline Cable Press");
+        panel.add(new JLabel("Incline DB Press: "));
+        addRow(panel);
+        panel.add(new JLabel("Machine Press: "));
+        addRow(panel);
+        panel.add(new JLabel("Decline Cable Press: "));
+        addRow(panel); 
 
         frame.add(panel);
         frame.pack();
@@ -39,15 +43,14 @@ public class chest {
     }
 
     // Helper method to add a row with labels and buttons
-    private static void addRow(JPanel panel, String title) {
-
-        panel.add(new JLabel(title));
+    private static void addRow(JPanel panel) {
 
         JTextField textField1 = new JTextField();
         panel.add(textField1);
+        JLabel userInputLabel = new JLabel("");
         textField1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JLabel userInputLabel = new JLabel(textField1.getText());
+                userInputLabel.setText(textField1.getText());
                 int position = Arrays.asList(panel.getComponents()).indexOf(textField1);
                 panel.remove(textField1); // Remove the text field from the panel
                 panel.add(userInputLabel, position); // Add the label with user input to the panel
@@ -58,31 +61,74 @@ public class chest {
 
         JTextField textField2 = new JTextField();
         panel.add(textField2);
+        JLabel userInputLabel2 = new JLabel("");
         textField2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                JLabel userInputLabel = new JLabel(textField2.getText());
-                int position = Arrays.asList(panel.getComponents()).indexOf(textField1);
+                userInputLabel2.setText((textField2.getText()));
+                int position = Arrays.asList(panel.getComponents()).indexOf(textField2);
                 panel.remove(textField2);
-                panel.add(userInputLabel, position);
+                panel.add(userInputLabel2, position);
                 panel.revalidate();
             }
         });
 
         JTextField textField3 = new JTextField();
         panel.add(textField3);
+        JLabel userInputLabel3 = new JLabel("");
         textField3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                JLabel userInputLabel = new JLabel(textField3.getText());
-                int position = Arrays.asList(panel.getComponents()).indexOf(textField1);
+                userInputLabel3.setText(textField3.getText());
+                int position = Arrays.asList(panel.getComponents()).indexOf(textField3);
                 panel.remove(textField3);
-                panel.add(userInputLabel, position);
+                panel.add(userInputLabel3, position);
                 panel.revalidate();
             }
         });
 
-        panel.add(new JButton("Edit"));
+        JButton button = new JButton("Edit");
+        panel.add(button);
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+
+                if(userInputLabel == null|| userInputLabel2 == null || userInputLabel3 == null){
+                    JOptionPane.showMessageDialog(null, "Must fill out before editing!");
+                    return;
+                }
+
+                
+                int position = Arrays.asList(panel.getComponents()).indexOf(userInputLabel);
+                int position2 = Arrays.asList(panel.getComponents()).indexOf(userInputLabel2);
+                int position3 = Arrays.asList(panel.getComponents()).indexOf(userInputLabel3);
+
+                panel.remove(userInputLabel);
+                panel.remove(userInputLabel2);
+                panel.remove(userInputLabel3);
+
+                addRow(panel);
+
+                panel.revalidate();
+                
+            }
+        });
+
+
     }
 
+    public static void addRowPos(JPanel panel, int pos, int pos2, int pos3){
+        JTextField textField1 = new JTextField();
+        panel.add(textField1);
+        JLabel userInputLabel = new JLabel("");
+        textField1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                userInputLabel.setText(textField1.getText());
+                int position = Arrays.asList(panel.getComponents()).indexOf(textField1);
+                panel.remove(textField1); // Remove the text field from the panel
+                panel.add(userInputLabel, position); // Add the label with user input to the panel
+                panel.revalidate(); // Revalidat
+            }
+        });
+
+    }
 
     public static void main(String[] args) {
         new chest();
