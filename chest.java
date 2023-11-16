@@ -104,7 +104,7 @@ public class chest {
                 panel.remove(userInputLabel2);
                 panel.remove(userInputLabel3);
 
-                addRow(panel);
+                addRowPos(panel, position, position2, position3);
 
                 panel.revalidate();
                 
@@ -116,7 +116,7 @@ public class chest {
 
     public static void addRowPos(JPanel panel, int pos, int pos2, int pos3){
         JTextField textField1 = new JTextField();
-        panel.add(textField1);
+        panel.add(textField1, pos);
         JLabel userInputLabel = new JLabel("");
         textField1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -125,6 +125,32 @@ public class chest {
                 panel.remove(textField1); // Remove the text field from the panel
                 panel.add(userInputLabel, position); // Add the label with user input to the panel
                 panel.revalidate(); // Revalidat
+            }
+        });
+
+        JTextField textField2 = new JTextField();
+        panel.add(textField2, pos2);
+        JLabel userInputLabel2 = new JLabel("");
+        textField2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                userInputLabel2.setText((textField2.getText()));
+                int position = Arrays.asList(panel.getComponents()).indexOf(textField2);
+                panel.remove(textField2);
+                panel.add(userInputLabel2, position);
+                panel.revalidate();
+            }
+        });
+
+        JTextField textField3 = new JTextField();
+        panel.add(textField3, pos3);
+        JLabel userInputLabel3 = new JLabel("");
+        textField3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                userInputLabel3.setText(textField3.getText());
+                int position = Arrays.asList(panel.getComponents()).indexOf(textField3);
+                panel.remove(textField3);
+                panel.add(userInputLabel3, position);
+                panel.revalidate();
             }
         });
 
